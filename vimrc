@@ -44,48 +44,15 @@ nnoremap k gk
 "Easy escaping to normal model
 imap jj <esc>
 
-"Auto change directory to match current file ,cd
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
-
-"easier window navigation
-
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-"Resize vsplit
-nmap <C-v> :vertical resize +5<cr>
-nmap 25 :vertical resize 40<cr>
-nmap 50 <c-w>=
-nmap 75 :vertical resize 120<cr>
-
 nmap <C-b> :NERDTreeToggle<cr>
-
-"Load the current buffer in Chrome
-nmap ,c :!open -a Google\ Chrome<cr>
 
 "Show (partial) command in the status line
 set showcmd
 
-" Create split below
-nmap :sp :rightbelow sp<cr>
-
-" Quickly go forward or backward to buffer
-nmap :bp :BufSurfBack<cr>
-nmap :bn :BufSurfForward<cr>
-
 highlight Search cterm=underline
-
-" Swap files out of the project root
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
 
 " Run PHPUnit tests
 map <Leader>t :!phpunit %<cr>
-
-" Easy motion stuff
-let g:EasyMotion_leader_key = '<Leader>'
 
 " Powerline (Fancy thingy at bottom stuff)
 python from powerline.vim import setup as powerline_setup
@@ -112,52 +79,12 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Abbreviations
 abbrev pft PHPUnit_Framework_TestCase
 
-abbrev gm !php artisan generate:model
-abbrev gc !php artisan generate:controller
-abbrev gmig !php artisan generate:migration
-
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
-
-" Edit todo list for project
-nmap ,todo :e todo.txt<cr>
-
-" Laravel framework commons
-nmap <leader>lr :e app/routes.php<cr>
-nmap <leader>lca :e app/config/app.php<cr>81Gf(%O
-nmap <leader>lcd :e app/config/database.php<cr>
-nmap <leader>lc :e composer.json<cr>
-
-" Concept - load underlying class for Laravel
-function! FacadeLookup()
-    let facade = input('Facade Name: ')
-    let classes = {
-\       'Form': 'Html/FormBuilder.php',
-\       'Html': 'Html/HtmlBuilder.php',
-\       'File': 'Filesystem/Filesystem.php',
-\       'Eloquent': 'Database/Eloquent/Model.php'
-\   }
-
-    execute ":edit vendor/laravel/framework/src/Illuminate/" . classes[facade]
-endfunction
-nmap ,lf :call FacadeLookup()<cr>
-
-" CtrlP Stuff
 
 " Familiar commands for file/symbol browsing
 map <D-p> :CtrlP<cr>
 map <C-r> :CtrlPBufTag<cr>
-
-" I don't want to pull up these folders/files when calling CtrlP
-set wildignore+=*/vendor/**
-set wildignore+=*/public/forum/**
-
-" Open splits
-nmap vs :vsplit<cr>
-nmap sp :split<cr>
-
-" Create/edit file in the current directory
-nmap :ed :edit %:p:h/
 
 " Prepare a new PHP class
 function! Class()
@@ -172,23 +99,7 @@ function! Class()
 
     " Open class
     exec 'normal iclass ' . name . ' {^M}^[O^['
-    
+
     exec 'normal i^M    public function __construct()^M{^M ^M}^['
 endfunction
 nmap ,1  :call Class()<cr>
-
-" Add a new dependency to a PHP class
-function! AddDependency()
-    let dependency = input('Var Name: ')
-    let namespace = input('Class Path: ')
-
-    let segments = split(namespace, '\')
-    let typehint = segments[-1]
-
-    exec 'normal gg/construct^M:H^Mf)i, ' . typehint . ' $' . dependency . '^[/}^>O$this->^[a' . dependency . ' = $' . dependency . ';^[?{^MkOprotected $' . dependency . ';^M^[?{^MOuse ' . namespace . ';^M^['
-
-    " Remove opening comma if there is only one dependency
-    exec 'normal :%s/(, /(/g
-'
-endfunction
-nmap ,2  :call AddDependency()<cr>
