@@ -4,7 +4,7 @@ vagrantfile-local:
         box: puphpet/ubuntu1404-x64
         box_url: puphpet/ubuntu1404-x64
         hostname: ''
-        memory: '4096'
+        memory: '2048'
         cpus: '1'
         chosen_provider: virtualbox
         network:
@@ -77,25 +77,7 @@ apache:
     modules:
         - rewrite
     vhosts:
-        EiPVXQMvDBym:
-            servername: www.tlspushdev.local
-            serveraliases:
-                - tlspushdev.local
-            docroot: /var/www/tlspushdev
-            port: '80'
-            override:
-                - All
-            options:
-                - Indexes
-                - FollowSymLinks
-                - MultiViews
-            engine: php
-            custom_fragment: ''
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_chain: ''
-            ssl_certs_dir: ''
-        XSMxgMTetC4n:
+        timesliterarysupplement:
             servername: www.tlsdev.local
             serveraliases:
                 - tlsdev.local
@@ -114,47 +96,11 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        DRMxgVFetK4n:
-            servername: www.drupaltest.local
+        devsandbox:
+            servername: devsandbox.local
             serveraliases:
-                - drupaltest.local
-            docroot: /var/www/drupaltest
-            port: '80'
-            override:
-                - All
-            options:
-                - Indexes
-                - FollowSymLinks
-                - MultiViews
-            engine: php
-            custom_fragment: ''
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_chain: ''
-            ssl_certs_dir: ''
-        XSMxgMTe9xDCn:
-            servername: www.itilaravel.local
-            serveraliases:
-                - itilaravel.local
-            docroot: /var/www/itilaravel/public
-            port: '80'
-            override:
-                - All
-            options:
-                - Indexes
-                - FollowSymLinks
-                - MultiViews
-            engine: php
-            custom_fragment: ''
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_chain: ''
-            ssl_certs_dir: ''
-        ESMxgSBe7xDCn:
-            servername: www.symfonytest.local
-            serveraliases:
-                - symfonytest.local
-            docroot: /var/www/symfonytest/web
+                - www.devsandbox.local
+            docroot: /var/www/devsandbox
             port: '80'
             setenv:
                 - 'APP_ENV dev'
