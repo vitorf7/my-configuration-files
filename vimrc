@@ -11,7 +11,9 @@ set number								"Let's activate line numbers.
 
 
 "-------------Visuals--------------"
-colorscheme atom-dark
+colorscheme hybrid_material						"Hybrid Material Theme https://github.com/kristijanhusak/vim-hybrid-material
+let g:enable_bold_font = 1						"Hybrid Material Theme functions,etc in bold
+
 set t_CO=256								"Use 256 colors. This is useful for Terminal Vim.
 set guifont=Fira_Code:h15						"Set the default font family and size.
 set linespace=15   						        "Macvim-specific line-height.
@@ -69,6 +71,14 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:10'
 let g:ctrlp_extension = ['buffertag']
+
+"/
+"/ vim-airline
+"/
+set laststatus=2
+let g:airline_theme = "hybrid"						"Hybrid Material Theme for vim-airline
+let g:airline_powerline_fonts = 1
+
 
 
 
