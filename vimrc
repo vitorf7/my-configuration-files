@@ -1,105 +1,82 @@
-set nocompatible   " Disable vi-compatibility
-set t_Co=256
+set nocompatible              						"We want the latest Vim settings/options.
 
-colorscheme Tomorrow-Night
-set guifont=Meslo\ LG\ M\ for\ Powerline:h14
-set guioptions-=T " Removes top toolbar
-set guioptions-=r " Removes right hand scroll bar
-set go-=L " Removes left hand scroll bar
-set linespace=15
+so ~/.vim/plugins.vim
 
-set showmode                    " always show what mode we're currently editing in
-set nowrap                      " don't wrap lines
-set tabstop=4                   " a tab is four spaces
-set smarttab
-set tags=tags
-set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
-set expandtab                   " expand tabs by default (overloadable per file type later)
-set shiftwidth=4                " number of spaces to use for autoindenting
-set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
-set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-set autoindent                  " always set autoindenting on
-set copyindent                  " copy the previous indentation on autoindenting
-set number                      " always show line numbers
-set ignorecase                  " ignore case when searching
-set smartcase                   " ignore case if search pattern is all lowercase,
-set timeout timeoutlen=200 ttimeoutlen=100
-set visualbell           " don't beep
-set noerrorbells         " don't beep
-set autowrite  "Save on buffer switch
-set mouse=a
+syntax enable
+set backspace=indent,eol,start                                          "Make backspace behave like every other editor.
+let mapleader = ',' 						    	"The default is \, but a comma is much better.
+set number								"Let's activate line numbers.
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
-" Fast saves
-nmap <leader>w :w!<cr>
 
-" Down is really the next line
-nnoremap j gj
-nnoremap k gk
 
-"Easy escaping to normal model
-imap jj <esc>
+"-------------Visuals--------------"
+colorscheme atom-dark
+set t_CO=256								"Use 256 colors. This is useful for Terminal Vim.
+set guifont=Fira_Code:h15						"Set the default font family and size.
+set linespace=15   						        "Macvim-specific line-height.
 
-nmap <C-b> :NERDTreeToggle<cr>
+set guioptions-=l                                                       "Disable Gui scrollbars.
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
 
-"Show (partial) command in the status line
-set showcmd
 
-highlight Search cterm=underline
 
-" Run PHPUnit tests
-map <Leader>t :!phpunit %<cr>
 
-" Powerline (Fancy thingy at bottom stuff)
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"-------------Search--------------"
+set hlsearch								"Highlight all matched terms.
+set incsearch								"Incrementally highlight, as we type.
 
-autocmd cursorhold * set nohlsearch
-autocmd cursormoved * set hlsearch
 
-" Remove search results
-command! H let @/=""
 
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Abbreviations
-abbrev pft PHPUnit_Framework_TestCase
+"-------------Split Management--------------"
+set splitbelow 								"Make splits default to below...
+set splitright								"And to the right. This feels more natural.
 
-" Auto-remove trailing spaces
-autocmd BufWritePre *.php :%s/\s\+$//e
+"We'll set simpler mappings to switch between splits.
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
 
-" Familiar commands for file/symbol browsing
-map <D-p> :CtrlP<cr>
-map <C-r> :CtrlPBufTag<cr>
 
-" Prepare a new PHP class
-function! Class()
-    let name = input('Class name? ')
-    let namespace = input('Any Namespace? ')
 
-    if strlen(namespace)
-        exec 'normal i<?php namespace ' . namespace . ';
-    else
-        exec 'normal i<?php
-    endif
 
-    " Open class
-    exec 'normal iclass ' . name . ' {^M}^[O^['
+"-------------Mappings--------------"
+"Make it easy to edit the Vimrc file.
+nmap <Leader>ev :tabedit ~/.vimrc<cr>
+"Make it easy to edit the plugins.vim file
+nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
 
-    exec 'normal i^M    public function __construct()^M{^M ^M}^['
-endfunction
-nmap ,1  :call Class()<cr>
+"Add simple highlight removal.
+nmap <Leader><space> :nohlsearch<cr>
+
+"Make NERDTree easier to toggle.
+nmap <D-1> :NERDTreeToggle<cr>
+
+nmap <c-R> :CtrlPBufTag<cr>
+nmap <D-e> :CtrlPMRUFiles<cr>
+
+
+
+
+"-------------Plugins--------------"
+"/
+"/ CtrlP
+"/
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:10'
+let g:ctrlp_extension = ['buffertag']
+
+
+
+"-------------Auto-Commands--------------"
+"Automatically source the Vimrc file on save.
+
+augroup autosourcing
+	autocmd!
+	autocmd BufWritePost ~/.vimrc source %
+	autocmd BufWritePost ~/.vim/plugins.vim source %
+augroup END
