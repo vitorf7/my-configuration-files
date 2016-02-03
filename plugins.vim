@@ -1,4 +1,3 @@
-
 filetype off                  " required
 
 "Set the runtime path to include Vundle and initialize.
