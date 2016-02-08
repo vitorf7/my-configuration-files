@@ -1,44 +1,48 @@
-set nocompatible              						"We want the latest Vim settings/options.
+set nocompatible              						    "We want the latest Vim settings/options.
 
 so ~/.vim/plugins.vim
 
 syntax enable
 filetype indent on
-set backspace=indent,eol,start                                          "Make backspace behave like every other editor.
-let mapleader = ',' 						    	"The default is \, but a comma is much better.
-set number								"Let's activate line numbers.
+set backspace=indent,eol,start                          "Make backspace behave like every other editor.
+let mapleader = ',' 						    	    "The default is \, but a comma is much better.
+set number								                "Let's activate line numbers.
 
 
 
 
 "-------------Visuals--------------"
-colorscheme hybrid_material						"Hybrid Material Theme https://github.com/kristijanhusak/vim-hybrid-material
-let g:enable_bold_font = 1						"Hybrid Material Theme functions,etc in bold
+colorscheme hybrid_material					            "Hybrid Material Theme https://github.com/kristijanhusak/vim-hybrid-material
+let g:enable_bold_font = 1					            "Hybrid Material Theme functions,etc in bold
 
-set t_CO=256								"Use 256 colors. This is useful for Terminal Vim.
-set guifont=Fira_Code:h15						"Set the default font family and size.
-set macligatures							"We want pretty symbols, when available
-set guioptions-=e							"We don't want gui tabs
-set linespace=15   						        "Macvim-specific line-height.
+set t_CO=256								            "Use 256 colors. This is useful for Terminal Vim.
+set guifont=Fira_Code:h15					            "Set the default font family and size.
+set macligatures							            "We want pretty symbols, when available
+set guioptions-=e							            "We don't want gui tabs
+set linespace=15   						                "Macvim-specific line-height.
 
-set guioptions-=l                                                       "Disable Gui scrollbars.
+set guioptions-=l                                       "Disable Gui scrollbars.
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
+set tabstop     =4   						            "tabstop:          Width of tab character
+set softtabstop =4							            "softtabstop:      Fine tunes the amount of white space to be added
+set shiftwidth  =4							            "shiftwidth        Determines the amount of whitespace to add in normal mode
+set expandtab								            "expandtab:        When on uses space instead of tabs
 
 
 
 "-------------Search--------------"
-set hlsearch								"Highlight all matched terms.
-set incsearch								"Incrementally highlight, as we type.
+set hlsearch								            "Highlight all matched terms.
+set incsearch								            "Incrementally highlight, as we type.
 
 
 
 
 "-------------Split Management--------------"
-set splitbelow 								"Make splits default to below...
-set splitright								"And to the right. This feels more natural.
+set splitbelow 								            "Make splits default to below...
+set splitright								            "And to the right. This feels more natural.
 
 "We'll set simpler mappings to switch between splits.
 nmap <C-J> <C-W><C-J>
@@ -56,6 +60,8 @@ nmap <Leader>ev :tabedit ~/.vimrc<cr>
 nmap <Leader>eg :tabedit ~/.gvimrc<cr>
 "Make it easy to edit the plugins.vim file
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+"Make it easy to edit the aliases file
+nmap <Leader>ea :tabedit ~/.aliases<cr>
 
 "Add simple highlight removal.
 nmap <Leader><space> :nohlsearch<cr>
@@ -89,14 +95,14 @@ nmap <D-e> :CtrlPMRUFiles<cr>
 "/ vim-airline
 "/
 set laststatus=2
-let g:airline_theme = "hybrid"						"Hybrid Material Theme for vim-airline
+let g:airline_theme = "hybrid"						        "Hybrid Material Theme for vim-airline
 let g:airline_powerline_fonts = 1
 
 "/
 "/ NERDTree
 "/
-let NERDTreeShowHidden = 1						"Show hidden files on NERDTree
-let NERDTreeQiutOnOpen = 1						"Quit NERDTree when you open a file
+let NERDTreeShowHidden = 1						            "Show hidden files on NERDTree
+let NERDTreeQiutOnOpen = 1						            "Quit NERDTree when you open a file
 let NERDTreeHijackNetrw = 0
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
@@ -114,8 +120,8 @@ autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 "/
 "/ Vim PHP CS Fixer
 "/
-let g:php_cs_fixer_level = "psr2"              " which level ?
-"let g:php_cs_fixer_verbose = 0                 " Return the output of command if 1, else an inline information.
+let g:php_cs_fixer_level = "psr2"                           " which level ?
+"let g:php_cs_fixer_verbose = 0                             " Return the output of command if 1, else an inline information.
 autocmd FileType php nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 autocmd FileType php nnoremap <silent><C-b> :call PhpCsFixerFixFile()<CR><CR>
 
