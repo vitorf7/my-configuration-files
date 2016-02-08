@@ -3,6 +3,7 @@ set nocompatible              						"We want the latest Vim settings/options.
 so ~/.vim/plugins.vim
 
 syntax enable
+filetype indent on
 set backspace=indent,eol,start                                          "Make backspace behave like every other editor.
 let mapleader = ',' 						    	"The default is \, but a comma is much better.
 set number								"Let's activate line numbers.
@@ -63,6 +64,10 @@ nmap <Leader><space> :nohlsearch<cr>
 nmap <Leader>f :tag<space>
 nmap <Leader>rt :!ctags -R --exclude=node_modules
 
+"Add a file and edit
+nmap <Leader>n :e<space>
+"Add a file and edit in a new tab
+nmap <Leader>t :tabedit<space>
 
 
 "-------------Plugins + Mappings--------------"
@@ -95,6 +100,31 @@ let NERDTreeQiutOnOpen = 1						"Quit NERDTree when you open a file
 let NERDTreeHijackNetrw = 0
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
+
+"/
+"/ Vim PHP Namespace
+"/
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+"/
+"/ Vim PHP CS Fixer
+"/
+let g:php_cs_fixer_level = "psr2"              " which level ?
+"let g:php_cs_fixer_verbose = 0                 " Return the output of command if 1, else an inline information.
+autocmd FileType php nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+autocmd FileType php nnoremap <silent><C-b> :call PhpCsFixerFixFile()<CR><CR>
+
+"/
+"/ Emmet Vim
+"/
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+
 
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.

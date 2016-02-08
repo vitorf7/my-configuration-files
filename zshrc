@@ -6,3 +6,4 @@ export PATH="$NPM_PACKAGES/bin:$HOME/.composer/vendor/bin/:./vendor/bin:/usr/loc
 #Better following the official Powerline Documentation https://powerline.readthedocs.org/en/latest/
 #Official GitHub https://github.com/powerline/powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source ~/.aliases
