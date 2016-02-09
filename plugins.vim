@@ -22,6 +22,7 @@ Plugin 'jiangmiao/auto-pairs'
 "on mac use homebrew (brew install the_silver_searcher)
 Plugin 'rking/ag.vim'
 Plugin 'skwp/greplace.vim'
+Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

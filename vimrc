@@ -142,7 +142,6 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
-
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.
 
