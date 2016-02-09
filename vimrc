@@ -6,8 +6,11 @@ syntax enable
 filetype indent on
 set backspace=indent,eol,start                          "Make backspace behave like every other editor.
 let mapleader = ',' 						    	    "The default is \, but a comma is much better.
+set relativenumber                                      "Activate relative numbers (current line is 0)
 set number								                "Let's activate line numbers.
-
+"Setting relative number and number in vim 7.4 will create an hybrid which
+"will show the absolute line number for the current line and then the relative
+"numbers of the lines above and below
 
 
 
@@ -31,7 +34,9 @@ set softtabstop =4							            "softtabstop:      Fine tunes the amount of
 set shiftwidth  =4							            "shiftwidth        Determines the amount of whitespace to add in normal mode
 set expandtab								            "expandtab:        When on uses space instead of tabs
 
-
+"Tab Line bg to match bg of Theme
+hi TabLine guifg=bg guibg=white
+hi TabLineFill guifg=bg
 
 "-------------Search--------------"
 set hlsearch								            "Highlight all matched terms.
@@ -130,6 +135,12 @@ autocmd FileType php nnoremap <silent><C-b> :call PhpCsFixerFixFile()<CR><CR>
 "/
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
+
+"/ 
+"/ Greplace
+"/
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 
 "-------------Auto-Commands--------------"

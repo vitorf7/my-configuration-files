@@ -17,7 +17,11 @@ Plugin '2072/vim-syntax-for-PHP.git'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'jwalton512/vim-blade'
 Plugin 'mattn/emmet-vim'
-
+Plugin 'jiangmiao/auto-pairs'
+"Ag will make use of silver searcher. Needs to be installed in the computer
+"on mac use homebrew (brew install the_silver_searcher)
+Plugin 'rking/ag.vim'
+Plugin 'skwp/greplace.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
