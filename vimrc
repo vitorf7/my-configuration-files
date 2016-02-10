@@ -11,7 +11,7 @@ set number								                "Let's activate line numbers.
 "Setting relative number and number in vim 7.4 will create an hybrid which
 "will show the absolute line number for the current line and then the relative
 "numbers of the lines above and below
-
+set autoread                                            "Make sure that Vim auto reads files, especially useful when updating files becuase of git
 
 
 "-------------Visuals--------------"
@@ -144,12 +144,18 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.
-
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost ~/.vimrc source %
 	autocmd BufWritePost ~/.gvimrc source %
 	autocmd BufWritePost ~/.vim/plugins.vim source %
+augroup END
+
+"Automatically csscomb scss files (needs to have csscomb installed in the
+"computer)
+augroup autocsscomb
+	autocmd!
+	autocmd BufWritePost *.scss :silent !csscomb %
 augroup END
 
 " Notes and Tips
