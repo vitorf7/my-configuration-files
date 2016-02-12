@@ -80,6 +80,11 @@ nmap <Leader>n :e<space>
 "Add a file and edit in a new tab
 nmap <Leader>t :tabedit<space>
 
+"Mapp jj to exit out like esc
+imap jj <ESC>
+
+"Make it easier to close an HTML Tag
+:imap <C-Space> <C-X><C-O>
 
 "-------------Plugins + Mappings--------------"
 "/
