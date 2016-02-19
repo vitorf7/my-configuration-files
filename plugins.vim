@@ -24,6 +24,8 @@ Plugin 'rking/ag.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'Ioannis-Kapoulas/vim-autoprefixer'
 Plugin 'travisjeffery/vim-auto-mkdir'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'joonty/vim-phpqa'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

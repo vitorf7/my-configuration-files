@@ -33,6 +33,9 @@ set tabstop     =4   						            "tabstop:          Width of tab character
 set softtabstop =4							            "softtabstop:      Fine tunes the amount of white space to be added
 set shiftwidth  =4							            "shiftwidth        Determines the amount of whitespace to add in normal mode
 set expandtab								            "expandtab:        When on uses space instead of tabs
+if exists('+colorcolumn')
+set colorcolumn=80,120                                  "Set column width 80 characters
+endif
 
 "Tab Line bg to match bg of Theme
 hi TabLine guifg=bg guibg=white
@@ -117,6 +120,14 @@ let NERDTreeHijackNetrw = 0
 "Make NERDTree easier to toggle.
 nmap <D-1> :NERDTreeToggle<cr>
 
+
+
+"/
+"/ NERD Commenter
+"/
+"Re-map the toggle comment of NERD commenter
+nmap <D-/> <Leader>c<space>
+
 "/
 "/ Vim PHP Namespace
 "/
@@ -147,6 +158,25 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
+
+"/
+"/ Vim PHP QA
+"/
+" Set the codesniffer args
+let g:phpqa_codesniffer_args = "--standard=psr2"
+" PHP executable (default = "php")
+let g:phpqa_php_cmd='/usr/local/bin/php'
+" PHP Code Sniffer binary (default = "phpcs")
+let g:phpqa_codesniffer_cmd='/Users/vitorfaiante/.composer/vendor/bin/phpcs'
+" PHP Mess Detector binary (default = "phpmd")
+let g:phpqa_messdetector_cmd='/Users/vitorfaiante/.composer/vendor/bin/phpmd'
+" Don't run messdetector on save (default = 1)
+let g:phpqa_messdetector_autorun = 0
+" Don't run codesniffer on save (default = 1)
+let g:phpqa_codesniffer_autorun = 0
+" Stop the location list opening automatically
+let g:phpqa_open_loc = 0
+
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.
 augroup autosourcing
@@ -161,6 +191,18 @@ augroup END
 augroup autocsscomb
 	autocmd!
 	autocmd BufWritePost *.scss :silent !csscomb %
+augroup END
+
+" Override PHP syntax hilighting in comments
+" https://github.com/StanAngeloff/php.vim
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
 augroup END
 
 " Notes and Tips
