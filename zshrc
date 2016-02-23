@@ -7,3 +7,4 @@ export PATH="$NPM_PACKAGES/bin:$HOME/.composer/vendor/bin/:./vendor/bin:/usr/loc
 #Official GitHub https://github.com/powerline/powerline
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source ~/.aliases
+. `brew --prefix`/etc/profile.d/z.sh
