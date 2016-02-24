@@ -12,6 +12,7 @@ set number								                "Let's activate line numbers.
 "will show the absolute line number for the current line and then the relative
 "numbers of the lines above and below
 set autoread                                            "Make sure that Vim auto reads files, especially useful when updating files becuase of git
+set noerrorbells visualbell t_vb=                       "No bells
 
 
 "-------------Visuals--------------"
@@ -70,6 +71,8 @@ nmap <Leader>eg :tabedit ~/.gvimrc<cr>
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
 "Make it easy to edit the aliases file
 nmap <Leader>ea :tabedit ~/.aliases<cr>
+"Make it easy to edit any snippets file
+nmap <Leader>es :tabedit ~/.vim/snippets/
 
 "Add simple highlight removal.
 nmap <Leader><space> :nohlsearch<cr>
@@ -88,6 +91,17 @@ imap jj <ESC>
 
 "Make it easier to close an HTML Tag
 :imap <C-Space> <C-X><C-O>
+
+"Sort PHP use statements
+"http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
+vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
+
+
+"-------------Laravel Mappings--------------"
+nmap <Leader>lr :e app/Http/routes.php<cr>
+nmap <Leader>lmk :!php artisan make:
+nmap <Leader>la :! php artisan 
+
 
 "-------------Plugins + Mappings--------------"
 "/
@@ -131,12 +145,20 @@ nmap <D-/> <Leader>c<space>
 "/
 "/ Vim PHP Namespace
 "/
+"Use Statetemnts at the top of the file
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
 endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
+"Expand fully qualified namespace
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 
 "/
 "/ Vim PHP CS Fixer
@@ -149,7 +171,9 @@ autocmd FileType php nnoremap <silent><C-b> :call PhpCsFixerFixFile()<CR><CR>
 "/
 "/ Emmet Vim
 "/
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+imap <expr> <Leader><tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 "/ 

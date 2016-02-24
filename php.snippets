@@ -1,0 +1,57 @@
+snippet _c
+	public function __construct(${1})
+	{
+		${2}
+	}
+
+snippet pubf
+	public function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet prof
+	protected function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet prif
+	private function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet $
+	$this-> ${1}
+
+snippet rg
+	Route::get('${1}', '${2}');
+snippet rga
+	Route::get('${1}', function() {
+		${2}
+	});
+snippet rp
+	Route::post('${1}', '${2}');
+snippet rpa
+	Route::post('${1}', function() {
+		${2}
+	});
+snippet ru
+	Route::put('${1}', '${2}');
+snippet rua
+	Route::put('${1}', function() {
+		${2}
+	});
+snippet rpt
+	Route::patch('${1}', '${2}');
+snippet rpta
+	Route::patch('${1}', function() {
+		${2}
+	});
+snippet rd
+	Route::delete('${1}', '${2}');
+snippet rda
+	Route::delete('${1}', function() {
+		${2}
+	});

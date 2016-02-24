@@ -26,6 +26,8 @@ Plugin 'travisjeffery/vim-auto-mkdir'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'joonty/vim-phpqa'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
