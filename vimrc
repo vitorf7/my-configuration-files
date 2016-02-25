@@ -97,11 +97,13 @@ imap jj <ESC>
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 
 
-"-------------Laravel Mappings--------------"
+"-------------Laravel Specific--------------"
 nmap <Leader>lr :e app/Http/routes.php<cr>
 nmap <Leader>lmk :!php artisan make:
 nmap <Leader>la :! php artisan 
 
+"-------------Auto-Complete--------------"
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "-------------Plugins + Mappings--------------"
 "/
@@ -172,7 +174,7 @@ autocmd FileType php nnoremap <silent><C-b> :call PhpCsFixerFixFile()<CR><CR>
 "/ Emmet Vim
 "/
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,blade EmmetInstall
 imap <expr> <Leader><tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
