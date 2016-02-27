@@ -13,6 +13,8 @@ set number								                "Let's activate line numbers.
 "numbers of the lines above and below
 set autoread                                            "Make sure that Vim auto reads files, especially useful when updating files becuase of git
 set noerrorbells visualbell t_vb=                       "No bells
+set autowriteall                                        "Automatically write the file when switching the buffer
+set complete=.,w,b,u                                    "Set our desired autocompletion
 
 
 "-------------Visuals--------------"
