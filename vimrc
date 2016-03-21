@@ -73,8 +73,10 @@ nmap <Leader>eg :tabedit ~/.gvimrc<cr>
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
 "Make it easy to edit the aliases file
 nmap <Leader>ea :tabedit ~/.aliases<cr>
-"Make it easy to edit any snippets file
-nmap <Leader>es :tabedit ~/.vim/snippets/
+"Make it easy to edit snippets file for any file type
+nmap <Leader>es :tabedit ~/.vim/UltiSnips/
+"Make it easy to edit the current file type snippets from UltiSnips
+nmap <Leader>ecs :UltiSnipsEdit<cr>
 
 "Add simple highlight removal.
 nmap <Leader><space> :nohlsearch<cr>
@@ -204,6 +206,20 @@ let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 " Stop the location list opening automatically
 let g:phpqa_open_loc = 0
+
+"/
+"/ pdv
+"/
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
+
+"/
+"/ UltiSnips
+"/
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "-------------Auto-Commands--------------"
 "Automatically source the Vimrc file on save.

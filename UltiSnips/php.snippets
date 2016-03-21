@@ -1,0 +1,81 @@
+snippet _c
+public function __construct(${1})
+{
+	${2}
+}
+endsnippet
+
+snippet pubf
+public function ${1}(${2})
+{
+	${3}
+}
+endsnippet
+
+snippet prof
+protected function ${1}(${2})
+{
+	${3}
+}
+endsnippet
+
+snippet prif
+private function ${1}(${2})
+{
+	${3}
+}
+endsnippet
+
+snippet $
+$this->${1}
+endsnippet
+
+snippet rg
+Route::get('${1}', '${2}');
+endsnippet
+
+snippet rga
+Route::get('${1}', function ()${2: use (${3})} {
+	${4}
+});
+endsnippet
+
+snippet rp
+Route::post('${1}', '${2}');
+endsnippet
+
+snippet rpa
+Route::post('${1}', function ()${2: use (${3})} {
+	${4}
+});
+endsnippet
+
+snippet ru
+Route::put('${1}', '${2}');
+endsnippet
+
+snippet rua
+Route::put('${1}', function ()${2: use (${3})} {
+	${4}
+});
+endsnippet
+
+snippet rpt
+Route::patch('${1}', '${2}');
+endsnippet
+
+snippet rpta
+Route::patch('${1}', function ()${2: use (${3})} {
+	${4}
+});
+endsnippet
+
+snippet rd
+Route::delete('${1}', '${2}');
+endsnippet
+
+snippet rda
+Route::delete('${1}', function ()${2: use (${3})} {
+	${4}
+});
+endsnippet

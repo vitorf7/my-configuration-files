@@ -1,0 +1,70 @@
+snippet blhidden
+{!! Form::hidden('${1:hidden}', ${2:null}) !!}
+endsnippet
+
+snippet blcheckbox
+<div class="form-group">
+	{!! Form::checkbox('${1:checkbox}', ${2:null}, ${3:false}, ['class' => 'form-control']) !!} ${4:CheckboxLabel}
+</div>
+endsnippet
+
+snippet bldate
+<div class="form-group">
+	<label for="${1:date}">${2:Text: }</label>
+	{!! Form::date('${1:date}', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet blemail
+<div class="form-group">
+	<label for="${1:email}">${2:Email: }</label>
+	{!! Form::email('${1:email}', ${3:null}, ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet blnumber
+<div class="form-group">
+	<label for="${1:number}">${2:Number: }</label>
+	{!! Form::number('${1:number}', ${3:null}, ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet blpassword
+<div class="form-group">
+	<label for="${1:password}">${2:Password: }</label>
+	{!! Form::password('${1:password}', ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet blradio
+<div class="form-group">
+	{!! Form::radio('${1:radio}', ${2:null}, ${3:false}, ['class' => 'form-control']) !!} ${4:RadioLabel}
+</div>
+endsnippet
+
+snippet blselect
+<div class="form-group">
+	<label for="${1:select}">${2:Select: }</label>
+	{!! Form::select('${1:select}', ${3:[]}, ${4:null}, ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet blsubmit
+<div class="form-group">
+	{!! Form::submit('${1:Submit}', ['class' => 'btn btn-primary']) !!}
+</div>
+endsnippet
+
+snippet bltext
+<div class="form-group">
+	<label for="${1:text}">${2:Text: }</label>
+	{!! Form::text('${1:text}', ${3:null}, ['class' => 'form-control']) !!}
+</div>
+endsnippet
+
+snippet bltextarea
+<div class="form-group">
+	<label for="${1:text}">${2:Textarea: }</label>
+	{!! Form::textarea('${1:text}', ${3:null}, ['class' => 'form-control']) !!}
+</div>
+endsnippet
